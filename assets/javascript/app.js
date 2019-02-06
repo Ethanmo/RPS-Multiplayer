@@ -58,16 +58,21 @@ database.ref().on("child_added", function(childSnapshot) {
     var nextTrain = frequency - (timeDifference % frequency);
    
     // time of the next train
-    var nextTrainTime = moment().add(nextTrain, "minutes").format("HH:mm");
+    var nextTrainTime = moment().add(nextTrain, "minutes").format("LT");
 
     //update html with processed data
-    var newTableRow = $("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + nxTrain + "</td><td>" + frequency + "</td><td>" + nextTrainTime + "</td></tr>");
+    var newTableRow = $("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + nextTrainTime + "</td><td>" + frequency + "</td><td>" + nextTrain + "</td></tr>");
     $("#trainTable>tbody").append(newTableRow);
 });
 
 
+// var minuteUpdate = setInterval(function() {
+    
+//     database.ref().once('value').then(function(updateSnapshot) {
 
 
+//     }), 60000
+// });
 
 
 
